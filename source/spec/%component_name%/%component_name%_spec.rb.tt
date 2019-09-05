@@ -1,0 +1,5 @@
+RSpec.describe <%= component_constant_name %> do
+  it 'has a spec' do
+    expect(true).to be(true)
+  end
+end

@@ -1,0 +1,9 @@
+version: '2.3'
+
+services:
+  gem:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/src/app:delegated

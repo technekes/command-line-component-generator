@@ -1,0 +1,72 @@
+version: '2.3'
+
+services:
+  gem:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    links:
+      - message-store-db-server
+      # - cache-db-server
+    volumes:
+      - .:/usr/src/app:delegated
+      - bundle:/usr/local/bundle:delegated
+    env_file: secrets.env
+    environment:
+      LOG_TAGS: "ignored,handle,write,-message_store,store,cache,snapshot,view_data,view_data_pg"
+      LOG_LEVEL: "warn"
+
+  message-store-db-server:
+    image: postgres:11-alpine
+    command: postgres -c 'max_connections=200'
+    ports:
+      - "54321:5432"
+    environment:
+      POSTGRES_DB: message_store
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+
+  # cache-db-server:
+  #   image: postgres:11-alpine
+  #   command: postgres -c 'max_connections=200'
+  #   ports:
+  #     - "54322:5432"
+  #   environment:
+  #     POSTGRES_DB: cache_db
+  #     POSTGRES_USER: docker
+  #     POSTGRES_PASSWORD: docker
+
+  # rake:
+  #   build:
+  #     context: tkxs_components
+  #     dockerfile: ../Dockerfile.migrate
+  #   command: -T
+  #   volumes:
+  #     - ./tkxs_components/db:/usr/src/app/db:delegated
+  #     - ./rakelib:/usr/src/app/rakelib:delegated
+  #   links:
+  #     - message-store-db-server
+  #     - cache-db-server
+  #   env_file:
+  #     - ./secrets.env
+
+  pgadmin:
+    image: dpage/pgadmin4
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+      - ./config/pgadmin_servers.json:/pgadmin4/servers.json
+    ports:
+      - "9090:80"
+    links:
+      - message-store-db-server
+      # - cache-db-server
+    environment:
+      PGADMIN_DEFAULT_EMAIL: docker
+      PGADMIN_DEFAULT_PASSWORD: docker
+
+volumes:
+  bundle:
+    driver: local
+  pgadmin:
+    driver: local

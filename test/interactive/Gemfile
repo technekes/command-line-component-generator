@@ -1,3 +1,0 @@
-source 'https://rubygems.org'
-
-gem 'evt-command_line-component_generator', path: '../../../command-line-component-generator'

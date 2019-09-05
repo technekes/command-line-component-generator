@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
 
-require_relative '../init'
+$LOAD_PATH.unshift(File.expand_path('../lib', __dir__))
 
 require 'component_host'
+require '<%= component_name %>'
 
 ComponentHost.start('<%= service_name %>-component') do |host|
   host.register(<%= component_constant_name %>::Start)

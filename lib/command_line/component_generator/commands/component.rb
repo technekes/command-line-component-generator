@@ -48,10 +48,10 @@ module CommandLine
         end
 
         def assign_executable_attribute
-          chmod './install-gems.sh', 0755
-          chmod './test.sh', 0755
-          chmod 'script/test-database-connection', 0755
-          chmod 'script/start', 0755
+          chmod 'bin/release', 0755
+          chmod 'bin/setup', 0755
+          chmod 'bin/start', 0755
+          chmod 'Rakefile', 0755
         end
       end
     end

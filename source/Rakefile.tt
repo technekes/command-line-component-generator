@@ -1,0 +1,35 @@
+#!/usr/bin/env rake
+
+require 'bundler/gem_tasks'
+
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.pattern = '*spec/**/*_spec.rb'
+end
+
+require 'rainbow/ext/string' unless String.respond_to?(:color)
+require 'rubocop/rake_task'
+
+RuboCop::RakeTask.new(:rubocop)
+
+task default: %i(rubocop spec)
+
+task ci: :default
+
+# this should really be handled inside of `tkxs-components`
+namespace :db do
+  task :'migrate-event-store' do
+    Dir.chdir(Gem::Specification.find_by_name('tkxs-components').gem_dir) do
+      require 'fileutils'
+      FileUtils.cp_r('db/config/.', '.')
+
+      require 'standalone_migrations'
+      StandaloneMigrations::Tasks.load_tasks
+
+      require 'tkxs/components/tasks'
+      TKXS::Components::Tasks.install
+
+      Rake::Task['db:migrate'].invoke
+    end
+  end
+end

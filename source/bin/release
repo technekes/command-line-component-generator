@@ -1,0 +1,9 @@
+#! /bin/sh
+
+echo "
+---
+:gemfury_api_key: ${GEMFURY_API_KEY}
+" > ~/.gem/gemfury
+
+rake release
+rm -f Gemfile.lock

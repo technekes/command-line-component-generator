@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://gem.fury.io/technekes/'
 
 gemspec name: '<%= component_name %>'
 
