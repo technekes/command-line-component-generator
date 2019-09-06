@@ -1,13 +1,12 @@
-# -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name = 'tkxs-component-generator'
-  s.version = '1.0.1.3'
+  s.version = '0.1.0'
   s.summary = 'Command line Eventide component generator'
   s.description = ' '
 
-  s.authors = ['The Eventide Project']
+  s.authors = ['TKXS']
   s.email = 'opensource@eventide-project.org'
-  s.homepage = 'https://github.com/eventide-project/command-line-component-generator'
+  s.homepage = 'https://github.com/technekes/command-line-component-generator'
   s.licenses = ['MIT']
 
   s.require_paths = ['lib']
@@ -18,6 +17,6 @@ Gem::Specification.new do |s|
   s.bindir = 'executable'
   s.executables = Dir.glob('executable/*').map(&File.method(:basename))
 
-  s.add_runtime_dependency 'thor'
   s.add_runtime_dependency 'evt-casing'
+  s.add_runtime_dependency 'thor'
 end
