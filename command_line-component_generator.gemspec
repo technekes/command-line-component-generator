@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
-  s.name = 'evt-command_line-component_generator'
+  s.name = 'tkxs-component-generator'
   s.version = '1.0.1.3'
   s.summary = 'Command line Eventide component generator'
   s.description = ' '
