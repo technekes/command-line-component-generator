@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.summary = 'Command line Eventide component generator'
   s.description = ' '
 
-  s.authors = ['TKXS']
-  s.email = 'opensource@eventide-project.org'
+  s.authors = %w(TKXS johnallen3d)
+  s.email = %w(techops@technekes john.allen@tkxs.com)
   s.homepage = 'https://github.com/technekes/command-line-component-generator'
   s.licenses = ['MIT']
 
