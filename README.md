@@ -14,7 +14,7 @@ $ cd something-component
 ## Installation
 
 ```
-$ gem install tkxs-comonent-generator
+$ gem install tkxs-component-generator
 ```
 
 ## License
