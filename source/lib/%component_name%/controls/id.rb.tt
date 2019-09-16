@@ -1,5 +1,0 @@
-module <%= component_constant_name %>
-  module Controls
-    ID = Identifier::UUID::Controls::Incrementing
-  end
-end

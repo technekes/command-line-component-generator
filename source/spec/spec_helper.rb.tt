@@ -1,0 +1,34 @@
+require 'simplecov'
+SimpleCov.start
+
+require 'pry'
+require 'ostruct'
+
+require '<%= component_name %>'
+
+Dir['./spec/support/**/*.rb'].each { |f| require f }
+
+RSpec.configure do |config|
+  config.pattern = 'spec/**/*_spec.rb'
+
+  config.expect_with :rspec do |expectations|
+    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+  end
+
+  config.mock_with :rspec do |mocks|
+    mocks.verify_partial_doubles = true
+  end
+
+  config.filter_run :focus
+  config.filter_run_excluding :disabled
+  config.run_all_when_everything_filtered = true
+
+  config.example_status_persistence_file_path = 'spec/examples.txt'
+  config.disable_monkey_patching!
+  config.warnings = true
+  config.default_formatter = 'doc' if config.files_to_run.one?
+  config.profile_examples = 5
+
+  config.order = :random
+  Kernel.srand config.seed
+end

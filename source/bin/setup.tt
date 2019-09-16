@@ -1,0 +1,4 @@
+#! /usr/bin/env sh
+
+bundle install -j5
+DATABASE=event_store rake db:migrate-event-store

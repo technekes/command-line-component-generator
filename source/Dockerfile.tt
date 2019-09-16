@@ -1,0 +1,21 @@
+# base layer
+FROM ruby:2.6-alpine AS base
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+RUN \
+  apk add --update --no-cache \
+    bash \
+    build-base \
+    postgresql-client \
+    postgresql-dev
+
+COPY gems* /usr/src/app/
+
+# development and test layer with all dependencies
+FROM base AS development
+
+COPY . /usr/src/app
+
+CMD ["bin/start"]

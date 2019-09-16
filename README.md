@@ -7,13 +7,14 @@ The `command_line-component_generator` creates a component skeleton. It generate
 ## Usage
 
 ```
-$ evt component something_component
+$ tkxs-component-generator component something
+$ cd something-component
 ```
 
 ## Installation
 
 ```
-$ gem install evt-command_line-component_generator
+$ gem install tkxs-comonent-generator
 ```
 
 ## License
