@@ -7,3 +7,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/usr/src/app:delegated
+      # for purposes of release
+      - $HOME/.ssh:/root/.ssh
+      - $HOME/.gitconfig:/root/.gitconfig
+      - $HOME/.gem/credentials:/root/.gem/credentials
